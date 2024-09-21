@@ -1,5 +1,8 @@
+// Copyright Bruce Wade, 2024
+
 #pragma once
 
+// Used for comparison of floating point numbers
 #define VEC3_EPSILON 0.000001f
 
 struct vec3 {
@@ -12,10 +15,9 @@ struct vec3 {
         float v[3];
     };
 
-    inline vec3() : x(0.0f), y(0.0f), z(0.0f) {}
-    inline vec3(float _x, float _y, float _z) : x(_x), y(_y), z(_z) {}
-    inline vec3(float *fv) : x(fv[0]), y(fv[1]), z(fv[2]) {}
-
+    vec3() : x(0.0f), y(0.0f), z(0.0f) {}
+    vec3(const float _x, const float _y, const float _z) : x(_x), y(_y), z(_z) {}
+    explicit vec3(const float *fv) : x(fv[0]), y(fv[1]), z(fv[2]) {}
 };
 
 // Overloads for vector manipulation and calculations
