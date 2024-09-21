@@ -41,3 +41,35 @@ float len(const vec3& v)
     }
     return sqrtf(lsq);
 }
+
+void normalize(vec3& v)
+{
+    float lsq = lenSq(v);
+    if (lsq < VEC3_EPSILON)
+    {
+        return;
+    }
+
+    float invLen = 1.0f / sqrtf(lsq);
+    v.x *= invLen;
+    v.y *= invLen;
+    v.z *= invLen;
+}
+
+vec3 normalized(const vec3& v)
+{
+    float lsq = lenSq(v);
+
+    if (lsq < VEC3_EPSILON)
+    {
+        return v;
+    }
+
+    float invLen = 1.0f / sqrtf(lsq);
+
+    return vec3(
+        v.x * invLen,
+        v.y * invLen,
+        v.z * invLen
+    );
+}

@@ -29,3 +29,7 @@ vec3 operator*(const vec3 &l, const vec3 &r);
 float dot(const vec3 &l, const vec3 &r);
 float lenSq(const vec3& v);
 float len(const vec3& v);
+
+// Normalize
+void normalize(vec3& v);
+vec3 normalized(const vec3& v);
