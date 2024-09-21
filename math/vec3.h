@@ -35,3 +35,8 @@ void normalize(vec3& v);
 vec3 normalized(const vec3& v);
 
 float angle(const vec3 &l, const vec3 &r);
+
+vec3 project(const vec3& a, const vec3& b);
+vec3 reject(const vec3& a, const vec3& b);
+vec3 reflect(const vec3& a, const vec3 &b);
+vec3 cross(const vec3& l, const vec3& r);

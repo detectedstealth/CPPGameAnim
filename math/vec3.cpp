@@ -88,3 +88,42 @@ float angle(const vec3 &l, const vec3 &r)
     float len = sqrtf(sqMagL) * sqrtf(sqMagR);
     return acosf(dotP / len);
 }
+
+vec3 project(const vec3& a, const vec3& b)
+{
+    float magBSq = len(b);
+    if (magBSq < VEC3_EPSILON)
+    {
+        return vec3();
+    }
+
+    float scale = dot(a, b) / magBSq;
+    return b * scale;
+}
+
+vec3 reject(const vec3& a, const vec3& b)
+{
+    vec3 projection = project(a, b);
+    return a - projection;
+}
+
+vec3 reflect(const vec3& a, const vec3 &b)
+{
+    float magBSq = len(b);
+    if (magBSq < VEC3_EPSILON)
+    {
+        return vec3();
+    }
+    float scale = dot(a, b) / magBSq;
+    vec3 proj2 = b * (scale * 2);
+    return a - proj2;
+}
+
+vec3 cross(const vec3& l, const vec3& r)
+{
+    return vec3(
+        l.y * r.z - l.z * r.y,
+        l.z * r.x - l.x * r.z,
+        l.x * r.y - l.y * r.x
+    );
+}
