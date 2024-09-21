@@ -127,3 +127,38 @@ vec3 cross(const vec3& l, const vec3& r)
         l.x * r.y - l.y * r.x
     );
 }
+
+vec3 lerp(const vec3& s, const vec3 &e, float t)
+{
+    return vec3(
+        s.x + (e.x - s.x) * t,
+        s.y + (e.y - s.y) * t,
+        s.z + (e.z - s.z) * t
+    );
+}
+
+vec3 slerp(const vec3& s, const vec3& e, float t)
+{
+    if (t < 0.01f)
+    {
+        return lerp(s, e, t);
+    }
+
+    vec3 from = normalized(s);
+    vec3 to = normalized(e);
+    float theta = angle(from, to);
+    float sin_theta = sinf(theta);
+    float a = sinf((1.0f - t) * theta) / sin_theta;
+    float b = sinf(t * theta) / sin_theta;
+    return from * a + to * b;
+}
+
+vec3 nlerp(const vec3& s, const vec3& e, float t)
+{
+    vec3 linear(
+        s.x + (e.x - s.x) * t,
+        s.y + (e.y - s.y) * t,
+        s.z + (e.z - s.z) * t
+    );
+    return normalized(linear);
+}

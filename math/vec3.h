@@ -40,3 +40,7 @@ vec3 project(const vec3& a, const vec3& b);
 vec3 reject(const vec3& a, const vec3& b);
 vec3 reflect(const vec3& a, const vec3 &b);
 vec3 cross(const vec3& l, const vec3& r);
+
+vec3 lerp(const vec3& s, const vec3 &e, float t);
+vec3 slerp(const vec3& s, const vec3& e, float t);
+vec3 nlerp(const vec3& s, const vec3& e, float t);
