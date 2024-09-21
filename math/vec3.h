@@ -20,10 +20,12 @@ struct vec3 {
 
 // Overloads for vector manipulation and calculations
 
-vec3 operator+(const vec3 &l, const vec3 &r);
-vec3 operator-(const vec3 &l, const vec3 &r);
-vec3 operator*(const vec3 &v, float f);
-vec3 operator*(const vec3 &l, const vec3 &r);
+vec3 operator+(const vec3& l, const vec3& r);
+vec3 operator-(const vec3& l, const vec3& r);
+vec3 operator*(const vec3& v, float f);
+vec3 operator*(const vec3& l, const vec3& r);
+bool operator==(const vec3& l, const vec3& r);
+bool operator!=(const vec3& l, const vec3& r);
 
 // Dot product
 float dot(const vec3 &l, const vec3 &r);
