@@ -73,3 +73,18 @@ vec3 normalized(const vec3& v)
         v.z * invLen
     );
 }
+
+float angle(const vec3 &l, const vec3 &r)
+{
+    float sqMagL = lenSq(l);
+    float sqMagR = lenSq(r);
+
+    if (sqMagL < VEC3_EPSILON || sqMagR < VEC3_EPSILON)
+    {
+        return 0.0f;
+    }
+
+    float dotP = dot(l, r);
+    float len = sqrtf(sqMagL) * sqrtf(sqMagR);
+    return acosf(dotP / len);
+}
