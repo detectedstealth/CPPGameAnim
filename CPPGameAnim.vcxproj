@@ -163,7 +163,9 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="glad\glad.h" />
     <ClInclude Include="glad\khrplatform.h" />
+    <ClInclude Include="math\vec2.h" />
     <ClInclude Include="math\vec3.h" />
+    <ClInclude Include="math\vec4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
