@@ -169,6 +169,9 @@
     <ClInclude Include="math\vec3.h" />
     <ClInclude Include="math\vec4.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tests\" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

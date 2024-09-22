@@ -2,9 +2,11 @@
 
 #pragma once
 
+#include "vec3.h"
 #include "vec4.h"
 
 #define MAT4_EPSILON 0.000001f
+
 
 struct mat4
 {
@@ -73,3 +75,13 @@ bool operator!=(const mat4& lhs, const mat4& rhs);
 mat4 operator+(const mat4& lhs, const mat4& rhs);
 mat4 operator*(const mat4& lhs, float f);
 mat4 operator*(const mat4& a, const mat4& b);
+vec4 operator*(const mat4& m, const vec4& v);
+
+vec3 transformVector(const mat4& m, const vec3& v);
+vec3 transformPoint(const mat4& m, const vec3& v, float& w);
+void transpose(mat4& m);
+mat4 transposed(const mat4& m);
+float determinant(const mat4& m);
+mat4 adjugate(const mat4& m);
+mat4 inverse(const mat4& m);
+void invert(mat4& m);
