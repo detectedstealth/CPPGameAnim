@@ -157,6 +157,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="CPPGameAnim.cpp" />
     <ClCompile Include="glad\glad.c" />
+    <ClCompile Include="math\mat4.cpp" />
     <ClCompile Include="math\vec3.cpp" />
   </ItemGroup>
   <ItemGroup>

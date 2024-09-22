@@ -4,6 +4,8 @@
 
 #include "vec4.h"
 
+#define MAT4_EPSILON 0.000001f
+
 struct mat4
 {
     union
@@ -65,3 +67,9 @@ struct mat4
             zx{_20}, zy{_21}, zz{_22}, zw{_23},
             tx{_30}, ty{_31}, ty{_32}, tw{_33} {}
 };
+
+bool operator==(const mat4& lhs, const mat4& rhs);
+bool operator!=(const mat4& lhs, const mat4& rhs);
+mat4 operator+(const mat4& lhs, const mat4& rhs);
+mat4 operator*(const mat4& lhs, float f);
+mat4 operator*(const mat4& a, const mat4& b);
