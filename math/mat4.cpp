@@ -1,5 +1,6 @@
 // Copywrite Bruce Wade, 2024
 
+#define _USE_MATH_DEFINES
 #include <cmath>
 
 #include "mat4.h"
@@ -187,4 +188,70 @@ void invert(mat4& m)
         return;
     }
     m = adjugate(m) * (1.0f / det);
+}
+
+// Camera matrices
+mat4 frustum(const float left, const float right, const float bottom, const float top, const float near, const float far)
+{
+    if (left == right || top == bottom || far == near)
+    {
+        std::cout << "Invalid frustum\n";
+        return mat4{};
+    }
+
+    return mat4{
+        (2.0f * near) / (right - left), 0.0f, 0.0f, 0.0f,
+        0.0f, (2.0f * near) / (top - bottom), 0.0f, 0.0f,
+        (right + left) / (right - left), (top + bottom) / (top - bottom), (-(far + near)) / (far - near), -1.0f,
+        0.0f, 0.0f, (-2 * far * near) / (far - near), 0.0f
+    };
+}
+
+mat4 perspective(const float fov, const float aspect, const float near, const float far)
+{
+    float ymax = near * tanf(fov * M_PI / 360.0f);
+    float xmax = ymax * aspect;
+    return frustum(-xmax, xmax, -ymax, ymax, near, far);
+}
+
+mat4 ortho(const float left, const float right, const float bottom, const float top, const float near, const float far)
+{
+    if (left == right || top == bottom || far == near)
+    {
+        return mat4{};
+    }
+
+    return mat4{
+        2.0f / (right - left), 0.0f, 0.0f, 0.0f,
+        0.0f, 2.0f / (top - bottom), 0.0f, 0.0f,
+        0.0f, 0.0f, -2.0f / (far - near), 0.0f,
+        -((right + left) / (right - left)), -((top + bottom) / (top - bottom)), -((far + near)/(far - near)), -1.0f
+    };
+}
+
+mat4 lookAt(const vec3& eye, const vec3& target, const vec3& up)
+{
+    vec3 f = normalized(target - eye) * -1.0f;
+    vec3 r = cross(up, f);
+
+    if (r == vec3{0.0f, 0.0f, 0.0f})
+    {
+        return mat4{};
+    }
+
+    normalize(r);
+    vec3 u = normalized(cross(f, r)); // Right handed
+    vec3 t = vec3{
+        -dot(r, eye),
+        -dot(u, eye),
+        -dot(f, eye)
+    };
+
+    return mat4{
+        // Transpose upper 3x3 matrix to invert it
+        r.x, u.x, f.x, 0,
+        r.y, u.y, f.y, 0,
+        r.z, u.z, f.z, 0,
+        t.x, t.y, t.z, 1
+    };
 }

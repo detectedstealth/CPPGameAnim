@@ -85,3 +85,9 @@ float determinant(const mat4& m);
 mat4 adjugate(const mat4& m);
 mat4 inverse(const mat4& m);
 void invert(mat4& m);
+
+// Camera Matrices
+mat4 frustum(float left, float right, float bottom, float top, float near, float far);
+mat4 perspective(float fov, float aspect, float near, float far);
+mat4 ortho(float left, float right, float bottom, float top, float near, float far);
+mat4 lookAt(const vec3& eye, const vec3& target, const vec3& up);
