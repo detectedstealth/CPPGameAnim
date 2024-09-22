@@ -1,4 +1,4 @@
-// // Copyright Bruce Wade, 2024
+// Copyright Bruce Wade, 2024
 
 #pragma once
 

@@ -51,7 +51,7 @@ struct mat4
         zx{0}, zy{0}, zz{1}, zw{0},
         tx{0}, ty{0}, tz{0}, tw{1} {}
 
-    mat4(float* fv) :
+    explicit mat4(float* fv) :
         xx{fv[0]}, xy{fv[1]}, xz{fv[2]}, xw{fv[3]},
         yx{fv[4]}, yy{fv[5]}, yz{fv[6]}, yw{fv[7]},
         zx{fv[8]}, zy{fv[9]}, zz{fv[10]}, zw{fv[11]},
@@ -65,7 +65,7 @@ struct mat4
             xx{_00}, xy{_01}, xz{_02}, xw{_03},
             yx{_10}, yy{_11}, yz{_12}, yw{_13},
             zx{_20}, zy{_21}, zz{_22}, zw{_23},
-            tx{_30}, ty{_31}, ty{_32}, tw{_33} {}
+            tx{_30}, ty{_31}, tz{_32}, tw{_33} {}
 };
 
 bool operator==(const mat4& lhs, const mat4& rhs);
