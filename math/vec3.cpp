@@ -14,7 +14,7 @@ vec3 operator-(const vec3& l, const vec3& r)
     return vec3{l.x - r.x, l.y - r.y, l.z - r.z};
 }
 
-vec3 operator*(const vec3& v, float f)
+vec3 operator*(const vec3& v, const float f)
 {
     return vec3{v.x * f, v.y * f, v.z * f};
 }
@@ -104,14 +104,12 @@ void normalize(vec3& v)
 vec3 normalized(const vec3& v)
 {
     const float lsq = lenSq(v);
-
     if (lsq < VEC3_EPSILON)
     {
         return v;
     }
 
     const float invLen = 1.0f / sqrtf(lsq);
-
     return vec3{
         v.x * invLen,
         v.y * invLen,
@@ -125,7 +123,7 @@ vec3 normalized(const vec3& v)
  * @param r 
  * @return angle in radians, to get degrees multipy by 57.2958f
  */
-float angle(const vec3 &l, const vec3 &r)
+float angle(const vec3& l, const vec3& r)
 {
     const float sqMagL = lenSq(l);
     const float sqMagR = lenSq(r);
@@ -164,7 +162,7 @@ vec3 reject(const vec3& a, const vec3& b)
     return a - projection;
 }
 
-vec3 reflect(const vec3& a, const vec3 &b)
+vec3 reflect(const vec3& a, const vec3& b)
 {
     const float magBSq = len(b);
     if (magBSq < VEC3_EPSILON)
@@ -191,7 +189,7 @@ vec3 cross(const vec3& l, const vec3& r)
     };
 }
 
-vec3 lerp(const vec3& s, const vec3 &e, float t)
+vec3 lerp(const vec3& s, const vec3& e, const float t)
 {
     return vec3{
         s.x + (e.x - s.x) * t,
@@ -200,7 +198,7 @@ vec3 lerp(const vec3& s, const vec3 &e, float t)
     };
 }
 
-vec3 slerp(const vec3& s, const vec3& e, float t)
+vec3 slerp(const vec3& s, const vec3& e, const float t)
 {
     if (t < 0.01f)
     {
@@ -216,7 +214,7 @@ vec3 slerp(const vec3& s, const vec3& e, float t)
     return from * a + to * b;
 }
 
-vec3 nlerp(const vec3& s, const vec3& e, float t)
+vec3 nlerp(const vec3& s, const vec3& e, const float t)
 {
     const vec3 linear{
         s.x + (e.x - s.x) * t,

@@ -15,8 +15,8 @@ struct TVec2
         T v[2];
     };
 
-    TVec2() : x{T(0)}, y{T(0)} {}
-    TVec2(T _x, T _y) : x{x}, y{y} {}
+    TVec2() : x{T{0}}, y{T{0}} {}
+    TVec2(T x, T y) : x{x}, y{y} {}
     explicit TVec2(T* fv) : x{fv[0]}, y{fv[1]} {}
 };
 

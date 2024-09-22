@@ -15,9 +15,9 @@ struct vec3 {
         float v[3];
     };
 
-    vec3() : x(0.0f), y(0.0f), z(0.0f) {}
-    vec3(const float _x, const float _y, const float _z) : x(_x), y(_y), z(_z) {}
-    explicit vec3(const float *fv) : x(fv[0]), y(fv[1]), z(fv[2]) {}
+    vec3() : x{0.0f}, y{0.0f}, z{0.0f} {}
+    vec3(const float x, const float y, const float z) : x{x}, y{y}, z{z} {}
+    explicit vec3(const float *fv) : x{fv[0]}, y{fv[1]}, z{fv[2]} {}
 };
 
 // Overloads for vector manipulation and calculations
@@ -30,7 +30,7 @@ bool operator==(const vec3& l, const vec3& r);
 bool operator!=(const vec3& l, const vec3& r);
 
 // Dot product
-float dot(const vec3 &l, const vec3 &r);
+float dot(const vec3& l, const vec3& r);
 float lenSq(const vec3& v);
 float len(const vec3& v);
 
@@ -38,13 +38,13 @@ float len(const vec3& v);
 void normalize(vec3& v);
 vec3 normalized(const vec3& v);
 
-float angle(const vec3 &l, const vec3 &r);
+float angle(const vec3& l, const vec3& r);
 
 vec3 project(const vec3& a, const vec3& b);
 vec3 reject(const vec3& a, const vec3& b);
-vec3 reflect(const vec3& a, const vec3 &b);
+vec3 reflect(const vec3& a, const vec3& b);
 vec3 cross(const vec3& l, const vec3& r);
 
-vec3 lerp(const vec3& s, const vec3 &e, float t);
+vec3 lerp(const vec3& s, const vec3& e, float t);
 vec3 slerp(const vec3& s, const vec3& e, float t);
 vec3 nlerp(const vec3& s, const vec3& e, float t);
